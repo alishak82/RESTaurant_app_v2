@@ -1,0 +1,22 @@
+<h2>Party</h2>
+
+<div class='partyname'>
+<ul>
+	<% @parties.each do |party| %>
+	<li>
+		<a href="/parties/<%= party.id %>">
+			<%= party.name %>
+		</a>
+	</li>
+	<% end %>
+</ul>
+</div>
+
+<form action="/parties/new" method="get">
+  <input type="submit" value="Add A New Party">
+</form> 
+
+<p>
+<form action="/" method="get">
+  <input type="submit" value="Home Page">
+</form> 

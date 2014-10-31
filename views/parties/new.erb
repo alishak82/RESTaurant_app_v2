@@ -1,0 +1,31 @@
+<h1>Add A New Party</h1>
+
+<form action="/parties" name="method" method="post">
+	<p>
+    Party Name:
+    <input type="text" name="party[name]" placeholder="name of party"></input>
+  </p>
+  <p>
+    Size of Party:
+    <input type="text" name="party[size]" placeholder="how many people?"></input>
+  </p>
+  <p>
+    Table Number:
+    <input type="text" name="party[table_number]" placeholder="what table number?"></input>
+  </p>
+  <p>
+    Has Paid?:
+    <input type="text" name="party[has_paid]" placeholder="true/false"></input>
+  </p>
+  <p>
+    Server Name:
+    <input type="text" name="party[waitstaff]" placeholder="name of server"></input>
+  </p>
+
+  <input type="submit" value="Add This Party">
+</form>
+
+<p>
+<form action="/" method="get">
+  <input type="submit" value="Nevermind">
+</form> 

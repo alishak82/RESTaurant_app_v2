@@ -1,0 +1,69 @@
+<h2>Party Name: <%= @party.name %> ... party of <%= @party.size %></h2> 	
+<h3>Party Info: Table: <%= @party.table_number %> Server Name: <%= @party_waitstaff %> Has Paid? <%= @party.has_paid %></h3>
+
+<% if @errors %>
+<%= @errors %>
+<% end %> 
+
+<form action="/parties/<%= @party.id %>/edit" method="get">
+	<input type="submit" value="Edit this party">
+</form>
+
+
+<div class='food-list'>
+	<h3><u> Menu Items </u></h3>
+	<ul>
+		<% @foods.each do |food| %>
+			<li>
+				<form action="/parties/<%= @party.id %>/orders" method='post'/>
+					<input type="hidden" name='food_id' value='<%= food.id %>'/>
+					<input type="submit" value='<%= food.name %>'/>
+				</form>
+			</li>
+		<% end %>
+	</ul>
+</div>
+
+<div class='food-list'>
+	<h3><u><%= @party.name %> Order</u></h3>
+	<ul>
+		<% @orders.each do |order| %>
+			<li>
+				
+				<form action="/parties/<%= @party.id %>/orders/<%= order.id %>" method='post'/>
+					<input type="hidden" name="_method" value="delete"/>
+					<h4>
+						<input type="submit" value='X'/>
+						<%= order.food.name %>
+					</h4>
+				</form>
+			</li>
+		<% end %>
+	</ul>
+</div>
+
+
+<p>
+	<form action="/parties/<%= @party.id %>/receipt" method="get">
+	<input type="submit" value="Print Receipt"/>
+</form>
+
+
+<p>
+	<form action="/parties/<%= @party.id %>/checkout" method="post">
+	<input type="hidden" name="_method" value="patch"/>
+	<input type="submit" value="This party has paid"/>
+</form>
+
+
+<p>
+	<form action="/parties/<%= @party.id %>" method="post">
+	<input type="hidden" name="_method" value="delete"/>
+	<input type="submit" value="This party has left"/>
+</form>
+
+<p>
+<form action="/" method="get">
+  <input type="submit" value="Home page">
+</form> 
+
